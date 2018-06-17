@@ -1,3 +1,8 @@
+# Isian Data Siswa
+Aplikasi ini diperuntukkan bagi admin SMA / SMK yang menggunakan kurikulum K13. Dengan modifikasi sedikit anda dapat menggunakan tingkat SMP.
+Tidak disarankan bagi pemula. Untuk pembelajaran silakan digunakan.
+# Tidak untuk dijual-belikan
+
 # CodeIgniter 3
 Open Source PHP Framework (originally from EllisLab)
 
