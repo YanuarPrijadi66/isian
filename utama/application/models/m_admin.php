@@ -385,7 +385,7 @@ class M_admin extends CI_Model
 		$truncate = '';
 		$outp = array();
 		if(strtolower($pilih) == 'siswa')
-			$truncate = "TRUNCATE TABLE tb_student";
+			$truncate = "TRUNCATE TABLE tb_siswa";
 		elseif(strtolower($pilih) == 'admin')
 			$truncate = "TRUNCATE TABLE tb_admin";
 		elseif(strtolower($pilih) == 'langgar')
