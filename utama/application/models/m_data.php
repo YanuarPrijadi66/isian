@@ -412,105 +412,185 @@ class M_data extends CI_Model
 	// ======================================================================================
 	// # Fungsi
 	// ======================================================================================
-	function showNavSiswa()
+	function showHeaderSiswa()
 	{
 		$username = $this->session->userdata('username');
 		$nama     = $this->session->userdata('nama');
 		echo
-		'<li class="header">MAIN NAVIGATION</li>
-		<li>
-			<a href="home">
-				<img src="'.base_url().'utama/assists/images/icons/house.png" width=24 height=24>
-				&nbsp;Beranda
-			</a>
-		</li>
-		<li>
-			<a href="#" id="'.$username.'" onclick="editDataSiswa(this)">
-				<img src="'.base_url().'utama/assists/images/icons/table.ico" width=24 height=24>
-				&nbsp;Isian Data
-			</a>
-		</li>
-		<li class="treeview">
-			<a href="#">
-				<img src="'.base_url().'utama/assists/images/bk.png" width=24 height=24>
-				<span>Counseling</span>
-				<span class="pull-right-container">
-					<i class="fa fa-angle-left pull-right"></i>
-				</span>
-			</a>
-			<ul class="treeview-menu">
-				<li>
-					<a href="presensi">
-						<img src="'.base_url().'utama/assists/images/icons/calendar_multi_week.ico" width=24 height=24>
-						&nbsp;Absensi / Presensi
+		'<div class="wrapper">
+			<header class="main-header">
+				<!-- Logo -->
+				<a href="home" class="logo">
+					<!-- mini logo for sidebar mini 50x50 pixels -->
+					<span class="logo-mini"><b>Isian</b></span>
+					<!-- logo for regular state and mobile devices -->
+					<span class="logo-lg"><b>Isian Siswa</b></span>
+				</a>
+
+				<!-- Header Navbar: style can be found in header.less --
+				<nav class="navbar navbar-static-top">
+				-->
+				<nav class="navbar navbar-static-top" role="navigation" style="height:50px;">
+					<!-- Sidebar toggle button--
+					<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+					-->
+					<a href="#" data-toggle="offcanvas" role="button">
+						<img src="'.base_url().'utama/assists/images/icons/application_side_list.png" width=28 height=28 style="margin-top:10px;margin-left:10px;">
+						<span class="sr-only">Toggle navigation</span>
 					</a>
-				</li>
-				<li>
-					<a href="pelanggaran">
-						<img src="'.base_url().'utama/assists/images/icons/stop2.ico" width=24 height=24>
-						&nbsp;Pelanggaran
-					</a>
-				</li>
-			</ul>
-		</li>
-		<li class="treeview">
-			<a href="#">
-				<img src="'.base_url().'utama/assists/images/icons/file_extension_pdf.png" width=24 height=24>
-				<span>Cetak PDF</span>
-				<span class="pull-right-container">
-					<i class="fa fa-angle-left pull-right"></i>
-				</span>
-			</a>
-			<ul class="treeview-menu">
-				<li>
-					<a href="cetakDataPDF">
-						<img src="'.base_url().'utama/assists/images/icons/personal-information.ico" width=24 height=24>
-						&nbsp;Cetak Isian
-					</a>
-				</li>
-				<li>
-					<a href="#" onclick="showSuketModal('.$username.')">
-						<img src="'.base_url().'utama/assists/images/icons/Paste.ico" width=24 height=24>
-						&nbsp;Surat Keterangan
-					</a>
-				</li>
-				<li class="treeview">
-					<a href="#">
-						<img src="'.base_url().'utama/assists/images/icons/address-book.ico" width=24 height=24>
-						<span>Penilaian</span>
-						<span class="pull-right-container">
-							<i class="fa fa-angle-left pull-right"></i>
-						</span>
-					</a>
-					<ul class="treeview-menu">
+
+					<!-- Navbar Right Menu -->
+					<div class="navbar-custom-menu">
+						<ul class="nav navbar-nav">
+							<!-- User Account: style can be found in dropdown.less -->
+							<li class="dropdown user user-menu">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<img src="'.base_url().'utama/assists/photos/home.png" width=24 height=24 class="img-circle" alt="User Image">
+									<span class="hidden-xs"><font color="red"><b><i><?php echo $nama;?></i></b></font></span>
+								</a>
+								<ul class="dropdown-menu">
+									<!-- User image -->
+									<li class="user-header">
+										<img src="'.base_url().'utama/assists/photos/home.png" class="img-circle" alt="User Image">
+										<p>'.$nama.' - Siswa</p>
+									</li>
+									<li class="user-footer">
+										<div class="pull-left">
+											<a href="profil" class="btn btn-default btn-flat">Profile</a>
+										</div>
+										<div class="pull-right">
+											<a href="logout" class="btn btn-default btn-flat">Sign out</a>
+										</div>
+									</li>
+								</ul>
+							</li>
+							<!-- Control Sidebar Toggle Button -->
+							<li>
+								<a href="#" data-toggle="control-sidebar">
+									<img src="'.base_url().'utama/assists/images/icons/configuration.ico" width=28 height=28 style="margin-top:-6px;">
+								</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</header>
+			
+			<!-- Left side column. contains the logo and sidebar -->
+			<aside class="main-sidebar">
+				<!-- sidebar: style can be found in sidebar.less -->
+				<section class="sidebar">
+			
+					<!-- Sidebar user panel -->
+					<div class="user-panel">
+						<div class="pull-left image">
+							<img src="'.base_url().'utama/assists/photos/home.png" class="img-circle" alt="User Image">
+						</div>
+						<div class="pull-left info">
+							<p><font color="red"><b><i>'.$nama.'</i></b></font></p>
+							<a href="#"><i class="glyphicon glyphicon-record text-green"></i> Online</a>
+						</div>
+					</div>
+					<!-- /.sidebar user panel -->
+				
+					<!-- sidebar menu: : style can be found in sidebar.less -->
+					<ul class="sidebar-menu">
+						<li class="header">MAIN NAVIGATION</li>
 						<li>
-							<a href="#" onclick="showRaporSiswa('."'ulangan'".')">
-								<img src="'.base_url().'utama/assists/images/icons/event.ico" width=24 height=24>
-								&nbsp;Ulangan Harian
+							<a href="home">
+								<img src="'.base_url().'utama/assists/images/icons/house.png" width=24 height=24>
+								&nbsp;Beranda
 							</a>
 						</li>
 						<li>
-							<a href="#" onclick="showRaporSiswa('."'rapor'".')">
-								<img src="'.base_url().'utama/assists/images/icons/property.ico" width=24 height=24>
-								&nbsp;Cetak Rapor
+							<a href="#" id="'.$username.'" onclick="editSiswaData(this)">
+								<img src="'.base_url().'utama/assists/images/icons/table.ico" width=24 height=24>
+								&nbsp;Isian Data
+							</a>
+						</li>
+						<li class="treeview">
+							<a href="#">
+								<img src="'.base_url().'utama/assists/images/bk.png" width=24 height=24>
+								<span>Counseling</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li>
+									<a href="awal?pl=presensi">
+										<img src="'.base_url().'utama/assists/images/icons/calendar_multi_week.ico" width=24 height=24>
+										&nbsp;Absensi / Presensi
+									</a>
+								</li>
+								<li>
+									<a href="awal?pl=langgar">
+										<img src="'.base_url().'utama/assists/images/icons/stop2.ico" width=24 height=24>
+										&nbsp;Pelanggaran
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="treeview">
+							<a href="#">
+								<img src="'.base_url().'utama/assists/images/icons/file_extension_pdf.png" width=24 height=24>
+								<span>Cetak PDF</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li>
+									<a href="cetakDataPDF">
+										<img src="'.base_url().'utama/assists/images/icons/personal-information.ico" width=24 height=24>
+										&nbsp;Cetak Isian
+									</a>
+								</li>
+								<li>
+									<a href="#" id="'.$username.'" onclick="showSuketModal(this)">
+										<img src="'.base_url().'utama/assists/images/icons/Paste.ico" width=24 height=24>
+										&nbsp;Surat Keterangan
+									</a>
+								</li>
+								<li class="treeview">
+									<a href="#">
+										<img src="'.base_url().'utama/assists/images/icons/address-book.ico" width=24 height=24>
+										<span>Penilaian</span>
+										<span class="pull-right-container">
+											<i class="fa fa-angle-left pull-right"></i>
+										</span>
+									</a>
+									<ul class="treeview-menu">
+										<li>
+											<a href="#" onclick="showSiswaRapor('."'ulangan'".')">
+												<img src="'.base_url().'utama/assists/images/icons/event.ico" width=24 height=24>
+												&nbsp;Ulangan Harian
+											</a>
+										</li>
+										<li>
+											<a href="#" onclick="showSiswaRapor('."'rapor'".')">
+												<img src="'.base_url().'utama/assists/images/icons/property.ico" width=24 height=24>
+												&nbsp;Cetak Rapor
+											</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#" onclick="tulisPesan()">
+								<img src="'.base_url().'utama/assists/images/icons/kontak.ico" width=24 height=24>
+								&nbsp;Tulis Pesan
+							</a>
+						</li>
+						<li>
+							<a href="logout">
+								<img src="'.base_url().'utama/assists/images/icons/exit.png" width=24 height=24>
+								&nbsp;Logout
 							</a>
 						</li>
 					</ul>
-				</li>
-			</ul>
-		</li>
-		<li>
-			<a href="#" onclick="tulisPesan()">
-				<img src="'.base_url().'utama/assists/images/icons/kontak.ico" width=24 height=24>
-				&nbsp;Tulis Pesan
-			</a>
-		</li>
-		<li>
-			<a href="logout">
-				<img src="'.base_url().'utama/assists/images/icons/exit.png" width=24 height=24>
-				&nbsp;Logout
-			</a>
-		</li>';
+				</section>
+			</aside>';
 
 		exit;
 	}
@@ -2666,7 +2746,7 @@ class M_data extends CI_Model
 														<label class="text-bayang">Masih Hidup / Meninggal Dunia ?</label>
 														<br/>
 														<label class="text-bayang">
-															<input type="radio" name="hdp_mt_ibu" id="hdpIbu" value="Y" ';if($dataKu['hdp_mt_ibu']=="Y") echo 'checked'; echo ' onclick="cekIbu()" ';if($level == 94) echo ' disabled '; echo ' Masih Hidup
+															<input type="radio" name="hdp_mt_ibu" id="hdpIbu" value="Y" ';if($dataKu['hdp_mt_ibu']=="Y") echo 'checked'; echo ' onclick="cekIbu()" ';if($level == 94) echo ' disabled '; echo '> Masih Hidup
 														</label>
 														&nbsp;&nbsp;&nbsp;&nbsp;
 														<label class="text-bayang">
@@ -3360,16 +3440,18 @@ class M_data extends CI_Model
 		
 		echo
 				'<!-- modal-dialog -->
-				<form action="cetakSuketPDF" method="GET">
-				<input type="hidden" id="id" name="id" value="'.$no_ujian_smp.'">
 				<div class="modal-dialog" role="document">
 					<!-- modal-content -->
 					<div class="modal-content" style="background: linear-gradient(blue, yellow, green);border-radius: 15px;">
+						<form action="cetakSuketPDF" method="GET">
+						<input type="hidden" id="id" name="id" value="'.$no_ujian_smp.'">
 						<!-- modal header -->
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 							<h3 class="modal-title" id="tulisPesanLabel" style="margin-bottom:0px;margin-top:0px;color: yellow;text-shadow: 2px 2px 4px black, 0 0 25px white, 0 0 5px darkblue;">
-								<center><b>Surat Keterangan</b></center>
+								<center>
+									<img src="'.base_url().'utama/assists/images/icons/document_editing.png" width=36 height=36> <b>Surat Keterangan</b>
+								</center>
 							</h3>
 						</div>
 						<!-- ./modal header -->
@@ -3400,111 +3482,7 @@ class M_data extends CI_Model
 						</div>
 						<!-- ./modal footer -->
 						
-					</div>
-					<!-- ./modal-content -->
-				</div>
-				<!-- ./ modal-dialog -->
-				</form>';
-		
-		exit;
-	}
-	
-	// ======================================================================================
-	// # Fungsi Tulis Pesan
-	// ======================================================================================
-	public function tulisPesan()
-	{
-		date_default_timezone_set("Asia/Jakarta");
-		
-		$no_ujian_smp = $this->session->userdata('username');
-		$nama    = $this->session->userdata('nama');
-		
-		$email = '';
-		$tanggal = date("j-n-Y");
-		$waktu   = date("H:i:s");
-		echo
-				'<!-- modal-dialog -->
-				<div class="modal-dialog" role="document">
-					<!-- modal-content -->
-					<div class="modal-content" style="background: linear-gradient(blue, yellow, green);border-radius: 15px;">
-						<!-- modal header -->
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							<h3 class="modal-title" id="tulisPesanLabel" style="margin-bottom:0px;margin-top:0px;color: yellow;text-shadow: 2px 2px 4px black, 0 0 25px white, 0 0 5px darkblue;">
-								<center><b>Tulis Pesan</b></center>
-							</h3>
-						</div>
-						<!-- ./modal header -->
-
-						<!-- modal body -->
-						<div class="modal-body">
-							<div class="row">
-								<div class="col-md-6">
-									<div class="row">
-										<div class="col-md-6">
-											<div class="form-group">
-												<label style="color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;">
-													Tanggal :
-												</label>
-												<input type="text" class="form-control" name="tanggal_p" id="tanggal_p" value="'.$tanggal.'" disabled>
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="form-group">
-												<label style="color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;">
-													Jam :
-												</label>
-												<input type="text" class="form-control" name="waktu_p" id="waktu_p" value="'.$waktu.'" disabled>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<label style="color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;">
-											Telephone :
-										</label>
-										<input type="text" class="form-control" name="telpon" id="telpon" onkeyup="cekInput(this)">
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label style="color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;">
-											Pengirim :
-										</label>
-											<input type="text" class="form-control" name="nama" id="nama" value="'.$nama.'" disabled>
-									</div>
-									<div class="form-group">
-										<label style="color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;">
-											email :
-										</label>
-										<input type="text" class="form-control" name="email" id="email" value="'.$email.'" onkeyup="cekInput(this)">
-									</div>
-								</div>
-							</div>
-							<!-- ./row -->
-							<div class="row">
-								<div class="col-md-12">
-									<div class="form-group">
-										<label style="color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;">
-											Pesan :
-										</label>
-										<textarea class="form-control" name="pesan" id="pesan" rows="3" onkeyup="cekInput(this)"></textarea>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- ./modal-body -->
-						
-						<!-- modal footer -->
-						<div class="modal-footer">
-							<button type="button" class="btn btn-warning pull-left" data-dismiss="modal" style="border-radius:8px;">
-								<img src="'.base_url().'utama/assists/images/icons/cross.png" width=20 height=20> Close 
-							</button>
-							<button type="button" class="btn btn-primary" style="border-radius:8px;" onclick="kirimPesan(this)">
-								<img src="'.base_url().'utama/assists/images/icons/send2.ico" width=20 height=20> Kirim
-							</button>
-						</div>
-						<!-- ./modal footer -->
-						
+						</form>
 					</div>
 					<!-- ./modal-content -->
 				</div>
@@ -3514,43 +3492,9 @@ class M_data extends CI_Model
 	}
 	
 	// ======================================================================================
-	// # Fungsi 
-	// ======================================================================================
-	public function kirimPesan()
-	{
-		date_default_timezone_set("Asia/Jakarta");
-		
-		$nama   = $this->input->post('nama');
-		$telpon = $this->input->post('telpon');
-		$email  = $this->input->post('email');
-		$pesan  = $this->input->post('pesan');
-		
-		$tgl_pesan = date("Y-m-d H:i:s");
-		
-		$data = array(
-					'tgl_pesan' => $tgl_pesan,
-					'nama' => $nama,
-					'telpon' => $telpon,
-					'email' => $email,
-					'pesan' => $pesan,
-					'tgl_balas' => $tgl_pesan,
-					'status' => 'Blm Baca'
-					);
-
-		$this->db->insert('tb_pesan', $data);
-		
-		$outp = array();
-		$outp[0] = 'sukses';
-		$outp[1] = 'Pesan sukses dikirim';
-		echo json_encode($outp);
-		
-		exit;
-	}
-	
-	// ======================================================================================
 	// # Fungsi
 	// ======================================================================================
-	public function showRaporSiswa()
+	public function showSiswaRapor()
 	{
 		date_default_timezone_set("Asia/Jakarta");
 		$no_ujian_smp = $this->session->userdata('username');
@@ -3597,9 +3541,13 @@ class M_data extends CI_Model
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 							<h3 class="modal-title" id="tulisPesanLabel" style="margin-bottom:0px;margin-top:0px;color: yellow;text-shadow: 2px 2px 4px black, 0 0 25px white, 0 0 5px darkblue;">';
 								if($pilih == 'rapor')
-									echo '<center><b>Cetak Rapor</b></center>';
+									echo '<center><b>
+											<img src="'.base_url().'utama/assists/images/icons/property.ico" width=32 height=32> Cetak Rapor
+										</b></center>';
 								else
-									echo '<center><b>Cetak Ulangan Harian</b></center>';
+									echo '<center><b>
+											<img src="'.base_url().'utama/assists/images/icons/event.ico" width=32 height=32> Cetak Ulangan Harian
+										</b></center>';
 								echo
 							'</h3>
 						</div>
@@ -4091,6 +4039,144 @@ class M_data extends CI_Model
 			</div>
 			<!-- /.panel -->
 		</div>';
+		
+		exit;
+	}
+	
+	// ======================================================================================
+	// # Fungsi Tulis Pesan
+	// ======================================================================================
+	public function tulisPesan()
+	{
+		date_default_timezone_set("Asia/Jakarta");
+		
+		$no_ujian_smp = $this->session->userdata('username');
+		$nama    = $this->session->userdata('nama');
+		
+		$email = '';
+		$tanggal = date("j-n-Y");
+		$waktu   = date("H:i:s");
+		echo
+				'<!-- modal-dialog -->
+				<div class="modal-dialog" role="document">
+					<!-- modal-content -->
+					<div class="modal-content" style="background: linear-gradient(blue, yellow, green);border-radius: 15px;">
+						<!-- modal header -->
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h3 class="modal-title" id="tulisPesanLabel" style="margin-bottom:0px;margin-top:0px;color: yellow;text-shadow: 2px 2px 4px black, 0 0 25px white, 0 0 5px darkblue;">
+								<center><b>Tulis Pesan</b></center>
+							</h3>
+						</div>
+						<!-- ./modal header -->
+
+						<!-- modal body -->
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label style="color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;">
+													Tanggal :
+												</label>
+												<input type="text" class="form-control" name="tanggal_p" id="tanggal_p" value="'.$tanggal.'" disabled>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label style="color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;">
+													Jam :
+												</label>
+												<input type="text" class="form-control" name="waktu_p" id="waktu_p" value="'.$waktu.'" disabled>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label style="color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;">
+											Telephone :
+										</label>
+										<input type="text" class="form-control" name="telpon" id="telpon" onkeyup="cekInput(this)">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label style="color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;">
+											Pengirim :
+										</label>
+											<input type="text" class="form-control" name="nama" id="nama" value="'.$nama.'" disabled>
+									</div>
+									<div class="form-group">
+										<label style="color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;">
+											email :
+										</label>
+										<input type="text" class="form-control" name="email" id="email" value="'.$email.'" onkeyup="cekInput(this)">
+									</div>
+								</div>
+							</div>
+							<!-- ./row -->
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label style="color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;">
+											Pesan :
+										</label>
+										<textarea class="form-control" name="pesan" id="pesan" rows="3" onkeyup="cekInput(this)"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- ./modal-body -->
+						
+						<!-- modal footer -->
+						<div class="modal-footer">
+							<button type="button" class="btn btn-warning pull-left" data-dismiss="modal" style="border-radius:8px;">
+								<img src="'.base_url().'utama/assists/images/icons/cross.png" width=20 height=20> Close 
+							</button>
+							<button type="button" class="btn btn-primary" style="border-radius:8px;" onclick="kirimPesan(this)">
+								<img src="'.base_url().'utama/assists/images/icons/send2.ico" width=20 height=20> Kirim
+							</button>
+						</div>
+						<!-- ./modal footer -->
+						
+					</div>
+					<!-- ./modal-content -->
+				</div>
+				<!-- ./ modal-dialog -->';
+		
+		exit;
+	}
+	
+	// ======================================================================================
+	// # Fungsi 
+	// ======================================================================================
+	public function kirimPesan()
+	{
+		date_default_timezone_set("Asia/Jakarta");
+		
+		$nama   = $this->input->post('nama');
+		$telpon = $this->input->post('telpon');
+		$email  = $this->input->post('email');
+		$pesan  = $this->input->post('pesan');
+		
+		$tgl_pesan = date("Y-m-d H:i:s");
+		
+		$data = array(
+					'tgl_pesan' => $tgl_pesan,
+					'nama' => $nama,
+					'telpon' => $telpon,
+					'email' => $email,
+					'pesan' => $pesan,
+					'tgl_balas' => $tgl_pesan,
+					'status' => 'Blm Baca'
+					);
+
+		$this->db->insert('tb_pesan', $data);
+		
+		$outp = array();
+		$outp[0] = 'sukses';
+		$outp[1] = 'Pesan sukses dikirim';
+		echo json_encode($outp);
 		
 		exit;
 	}

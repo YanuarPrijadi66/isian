@@ -37,7 +37,7 @@
 		<!-- AdminLTE App -->
 		<script src="<?php echo base_url();?>utama/assets/adminlte2/dist/js/app.min.js"></script>
 		<!-- My Script -->
-		<script src="<?php echo base_url();?>utama/assets/js/myscript.js"></script>
+		<script src="<?php echo base_url();?>utama/assets/js/myscript.min.js"></script>
 		
     </head>
     <body style="background:url(<?php echo base_url();?>utama/assists/images/depan.png) no-repeat center fixed;background-size: cover;">

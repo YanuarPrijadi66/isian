@@ -30,8 +30,9 @@ class M_admin extends CI_Model
 	// =========================
 	// # Fungsi Navigasi Admin #
 	// =========================
-	function showNavAdmin()
+	function showHeaderAdmin()
 	{
+			$nama = $this->session->userdata('nama');
 		$level    = $this->session->userdata('level');
 		$username = $this->session->userdata('username');
 		if($level == 94)
@@ -49,150 +50,228 @@ class M_admin extends CI_Model
 			
 		}
 		echo
-		'<li class="header">MAIN NAVIGATION</li>
-		<li>
-			<a href="home">
-				<img src="'.base_url().'utama/assists/images/icons/house.png" width=24 height=24>
-				&nbsp;Beranda
-			</a>
-		</li>
-		<li class="treeview">
-			<a href="#">
-				<img src="'.base_url().'utama/assists/images/icons/community.ico" width=24 height=24>
-				<span>Data</span>
-				<span class="pull-right-container">
-					<i class="fa fa-angle-left pull-right"></i>
-				</span>
-			</a>
-			<ul class="treeview-menu">
-				<li>
-					<a href="#" onclick="showDataSekolah()">
-						<img src="'.base_url().'utama/assists/images/icons/house.png" width=24 height=24>
-						&nbsp;Data Sekolah
+		'<div class="wrapper">
+			<header class="main-header">
+				<!-- Logo -->
+				<a href="home" class="logo">
+					<!-- mini logo for sidebar mini 50x50 pixels -->
+					<span class="logo-mini"><b>Isian</b></span>
+					<!-- logo for regular state and mobile devices -->
+					<span class="logo-lg"><b>Isian Siswa</b></span>
+				</a>
+
+				<!-- Header Navbar: style can be found in header.less -->
+				<nav class="navbar navbar-static-top" role="navigation">
+					<!-- Sidebar toggle button-->
+					<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+						<span class="sr-only">Toggle navigation</span>
 					</a>
-				</li>
-				<li>
-					<a href="wali?pl=kelas">
-						<img src="'.base_url().'utama/assists/images/icons/table.ico" width=24 height=24>
-						&nbsp;Data Kelas
-					</a>
-				</li>
-				<li>
-					<a href="#" onclick="showDataKKM()">
-						<img src="'.base_url().'utama/assists/images/icons/property.ico" width=24 height=24>
-						&nbsp;Data Ketuntasan
-					</a>
-				</li>';
-				if($level > 95)
-					echo
-				'<li>
-					<a href="user">
-						<img src="'.base_url().'utama/assists/images/icons/administrator.png" width=24 height=24>
-						&nbsp;Data Admin
-					</a>
-				</li>';
-				echo
-				'<li>
-					<a href="wali?pl=wali">
-						<img src="'.base_url().'utama/assists/images/icons/group.png" width=24 height=24>
-						&nbsp;Data Walikelas
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<img src="'.base_url().'utama/assists/images/icons/group.png" width=24 height=24>
-						<span>Data Siswa</span>
-						<span class="pull-right-container">
-							<i class="fa fa-angle-left pull-right"></i>
-						</span>
-					</a>
-					<ul class="treeview-menu">
+
+					<!-- Navbar Right Menu -->
+					<div class="navbar-custom-menu">
+						<ul class="nav navbar-nav">
+							<!-- User Account: style can be found in dropdown.less -->
+							<li class="dropdown user user-menu">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<img src="'.base_url().'utama/assists/photos/home.png" class="user-image" alt="User Image">
+										<span class="hidden-xs"><font color="red"><b><i>'.$nama.'</i></b></font></span>
+								</a>
+								<ul class="dropdown-menu">
+									<!-- User image -->
+									<li class="user-header">
+										<img src="'.base_url().'utama/assists/photos/home.png" class="img-circle" alt="User Image">
+											<p>'.$nama.' - ';if($level > 95) echo 'Admin'; else echo 'Wali Kls'; echo '</p>
+									</li>
+									<!-- Menu Footer-->
+									<li class="user-footer">
+										<div class="pull-left">
+											<a href="#" class="btn btn-default btn-flat">Profile</a>
+										</div>
+										<div class="pull-right">
+											<a href="logout" class="btn btn-default btn-flat">Sign out</a>
+										</div>
+									</li>
+								</ul>
+							</li>
+							<!-- Control Sidebar Toggle Button --
+							<li>
+								<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+							</li>
+							-->
+						</ul>
+					</div>
+					
+				</nav>
+			</header>
+
+			<!-- Left side column. contains the logo and sidebar -->
+			<aside class="main-sidebar">
+				<!-- sidebar: style can be found in sidebar.less -->
+				<section class="sidebar">
+			
+					<!-- Sidebar user panel -->
+					<div class="user-panel">
+						<div class="pull-left image">
+							<img src="'.base_url().'utama/assists/photos/home.png" class="img-circle" alt="User Image">
+						</div>
+						<div class="pull-left info">
+							<p><font color="red"><b><i>'.$nama.'</i></b></font></p>
+							<a href="#"><i class="glyphicon glyphicon-record text-green"></i> Online</a>
+						</div>
+					</div>
+					<!-- /.sidebar user panel -->
+				
+					<!-- sidebar menu: : style can be found in sidebar.less -->
+					<ul class="sidebar-menu" id="ulNavMenu">
+						<li class="header">MAIN NAVIGATION</li>
 						<li>
-							<a href="data-siswa">
-								<img src="'.base_url().'utama/assists/images/icons/personal-information.ico" width=24 height=24>
-								&nbsp;Data Siswa
-							</a>
-						</li>';
-						if($level > 95)
-						echo
-						'<li>
-							<a href="#" id="siswa" onclick="showImportData(this)">
-								<img src="'.base_url().'utama/assists/images/icons/database_add.png" width=24 height=24>
-								&nbsp;Import Data
+							<a href="home">
+								<img src="'.base_url().'utama/assists/images/icons/house.png" width=24 height=24>
+								&nbsp;Beranda
 							</a>
 						</li>
-						<li>
-							<a href="exportData?pl=datasiswa">
-								<img src="'.base_url().'utama/assists/images/icons/file_extension_xls.png" width=24 height=24>
-								&nbsp;Export Data
+						<li class="treeview">
+							<a href="#">
+								<img src="'.base_url().'utama/assists/images/icons/community.ico" width=24 height=24>
+								<span>Data</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li>
+									<a href="#" onclick="showDataSekolah()">
+										<img src="'.base_url().'utama/assists/images/icons/house.png" width=24 height=24>
+										&nbsp;Data Sekolah
+									</a>
+								</li>
+								<li>
+									<a href="#" onclick="showDataKKM()">
+										<img src="'.base_url().'utama/assists/images/icons/property.ico" width=24 height=24>
+										&nbsp;Data Ketuntasan
+									</a>
+								</li>';
+								if($level > 95)
+									echo
+								'<li>
+									<a href="awal?pl=admin">
+										<img src="'.base_url().'utama/assists/images/icons/administrator.png" width=24 height=24>
+										&nbsp;Data Admin
+									</a>
+								</li>';
+								echo
+								'<li>
+									<a href="awal?pl=wali&pl1=kelas">
+										<img src="'.base_url().'utama/assists/images/icons/table.ico" width=24 height=24>
+										&nbsp;Data Kelas
+									</a>
+								</li>
+								<li>
+									<a href="awal?pl=wali&pl1=wali">
+										<img src="'.base_url().'utama/assists/images/icons/group.png" width=24 height=24>
+										&nbsp;Data Walikelas
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="'.base_url().'utama/assists/images/icons/group.png" width=24 height=24>
+										<span>Data Siswa</span>
+										<span class="pull-right-container">
+											<i class="fa fa-angle-left pull-right"></i>
+										</span>
+									</a>
+									<ul class="treeview-menu">
+										<li>
+											<a href="awal?pl=siswa">
+												<img src="'.base_url().'utama/assists/images/icons/personal-information.ico" width=24 height=24>
+												&nbsp;Data Siswa
+											</a>
+										</li>';
+										if($level > 95)
+											echo
+										'<li>
+											<a href="#" id="siswa" onclick="showImportData(this)">
+												<img src="'.base_url().'utama/assists/images/icons/database_add.png" width=24 height=24>
+												&nbsp;Import Data
+											</a>
+										</li>
+										<li>
+											<a href="exportData?pl=datasiswa">
+												<img src="'.base_url().'utama/assists/images/icons/file_extension_xls.png" width=24 height=24>
+												&nbsp;Export Data
+											</a>
+										</li>';
+										echo
+									'</ul>
+								</li>
+							</ul>
+						</li>
+						<li class="treeview">
+							<a href="#">
+								<img src="'.base_url().'utama/assists/images/bk.png" width=24 height=24>
+								<span>Counseling</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li>
+									<a href="awal?pl=presensi">
+										<img src="'.base_url().'utama/assists/images/icons/calendar_multi_week.ico" width=24 height=24>
+										&nbsp;Absensi / Presensi
+									</a>
+								</li>
+								<li>
+									<a href="awal?pl=langgar">
+										<img src="'.base_url().'utama/assists/images/icons/stop2.ico" width=24 height=24>
+										&nbsp;Pelanggaran
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="treeview">
+							<a href="#">
+								<img src="'.base_url().'utama/assists/images/icons/address-book.ico" width=24 height=24>
+								<span>Penilaian</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li>
+									<a href="awal?pl=ulangan">
+										<img src="'.base_url().'utama/assists/images/icons/event.ico" width=24 height=24>
+										&nbsp;Ulangan Harian
+									</a>
+								</li>
+								<li>
+									<a href="awal?pl=rapor">
+										<img src="'.base_url().'utama/assists/images/icons/address-book.ico" width=24 height=24>
+										&nbsp;Nilai Rapor
+									</a>
+								</li>
+							</ul>
+						</li>';
+						if($level > 95)
+							echo
+						'<li>
+							<a href="awal?pl=pesan">
+								<img src="'.base_url().'utama/assists/images/icons/new-message.ico" width=24 height=24>
+								&nbsp;Baca Pesan
 							</a>
 						</li>';
 						echo
-					'</ul>
-				</li>
-			</ul>
-		</li>
-		<li class="treeview">
-			<a href="#">
-				<img src="'.base_url().'utama/assists/images/bk.png" width=24 height=24>
-				<span>Counseling</span>
-				<span class="pull-right-container">
-					<i class="fa fa-angle-left pull-right"></i>
-				</span>
-			</a>
-			<ul class="treeview-menu">
-				<li>
-					<a href="presensi">
-						<img src="'.base_url().'utama/assists/images/icons/calendar_multi_week.ico" width=24 height=24>
-						&nbsp;Absensi / Presensi
-					</a>
-				</li>
-				<li>
-					<a href="pelanggaran">
-						<img src="'.base_url().'utama/assists/images/icons/stop2.ico" width=24 height=24>
-						&nbsp;Pelanggaran
-					</a>
-				</li>
-			</ul>
-		</li>
-		<li class="treeview">
-			<a href="#">
-				<img src="'.base_url().'utama/assists/images/icons/address-book.ico" width=24 height=24>
-				<span>Penilaian</span>
-				<span class="pull-right-container">
-					<i class="fa fa-angle-left pull-right"></i>
-				</span>
-			</a>
-			<ul class="treeview-menu">
-				<li>
-					<a href="ulangan">
-						<img src="'.base_url().'utama/assists/images/icons/event.ico" width=24 height=24>
-						&nbsp;Ulangan Harian
-					</a>
-				</li>
-				<li>
-					<a href="rapor">
-						<img src="'.base_url().'utama/assists/images/icons/address-book.ico" width=24 height=24>
-						&nbsp;Nilai Rapor
-					</a>
-				</li>
-			</ul>
-		</li>';
-		if($level > 95)
-			echo
-		'<li>
-			<a href="pesan">
-				<img src="'.base_url().'utama/assists/images/icons/new-message.ico" width=24 height=24>
-				&nbsp;Baca Pesan
-			</a>
-		</li>';
-		echo
-		'<li>
-			<a href="logout">
-				<img src="'.base_url().'utama/assists/images/icons/exit.png" width=24 height=24>
-				&nbsp;Logout
-			</a>
-		</li>';
+						'<li>
+							<a href="logout">
+								<img src="'.base_url().'utama/assists/images/icons/exit.png" width=24 height=24>
+								&nbsp;Logout
+							</a>
+						</li>
+					</ul>
+				</section>
+				<!-- /.sidebar -->
+			</aside>
+		</div>';
 
 		exit;
 	}
@@ -203,26 +282,14 @@ class M_admin extends CI_Model
 	function showDataAll()
 	{
 		$pilih = $this->input->get('pl');
-		if(isset($_GET['id'])) {$id = $_GET['id'];} else {$id = '';}
-		if(isset($_GET['cr'])) {$cari = $_GET['cr'];} else {$cari = '';}
-		if(isset($_GET['m']))  {$mulai = $_GET['m'];} else {$mulai = 1;}
-		if(isset($_GET['sr'])) {$urut = $_GET['sr'];} else {$urut = '';}
-		if(isset($_GET['ur'])) {$naik = $_GET['ur'];} else {$naik = '';}
-		if(strtolower($pilih) == 'admin')
-			$this->showDataAdmin($id, $mulai, $cari);
-		elseif(strtolower($pilih) == 'siswa')
-			$this->showDataSiswa($id, $mulai, $cari, $urut, $naik);
-		elseif(strtolower($pilih) == 'pesan')
-			$this->showDataPesan($id, $mulai, $cari);
-		elseif(strtolower($pilih) == 'langgar')
-			$this->showPelanggaranSiswa();
-		elseif(strtolower($pilih) == 'rapor')
-			$this->showRaporSisip($id, $mulai, $cari);
-		elseif(strtolower($pilih) == 'ulangan')
-			$this->showUlanganHarian($id, $mulai, $cari);
-		elseif(strtolower($pilih) == 'wali')
-			$this->showDataWali($id, $mulai, $cari);
-		
+		if(strtolower($pilih) == 'admin')		$this->showDataAdmin();
+		elseif(strtolower($pilih) == 'siswa')	$this->showDataSiswa();
+		elseif(strtolower($pilih) == 'pesan')	$this->showDataPesan();
+		elseif(strtolower($pilih) == 'presensi')$this->showDataPresensi();
+		elseif(strtolower($pilih) == 'langgar')	$this->showDataLanggar();
+		elseif(strtolower($pilih) == 'rapor')	$this->showDataRapor();
+		elseif(strtolower($pilih) == 'ulangan')	$this->showDataUlangan();
+		elseif(strtolower($pilih) == 'wali')	$this->showDataWali();
 		exit;
 	}
 		
@@ -231,7 +298,10 @@ class M_admin extends CI_Model
 	// ===================================
 	public function showImportData()
 	{
-		if(isset($_GET['id'])) $pilih = $this->input->get('id'); else $pilih = 'siswa';
+		if(isset($_GET['id'])) 
+			$pilih = $this->input->get('id'); 
+		else 
+			$pilih = 'siswa';
 		$pilih1 = 'Data ' . $pilih;
 		if(strtolower($pilih) == 'rapor') $pilih1 = 'Nilai Rapor';
 		elseif(strtolower($pilih) == 'ulangan') $pilih1 = 'Nilai Ulangan';
@@ -246,7 +316,9 @@ class M_admin extends CI_Model
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					<h3 class="modal-title" id="isianUserLabel" style="margin-bottom:0px;margin-top:0px;color: yellow;text-shadow: 2px 2px 4px black, 0 0 25px white, 0 0 5px darkblue;">
-						<center><b>Import '.ucwords(strtolower($pilih1)).'</b></center>
+						<center>
+							<img src="'.base_url().'utama/assists/images/icons/file_extension_xls.png" width=36 height=36> <b>Import '.ucwords(strtolower($pilih1)).'</b>
+						</center>
 					</h3>
 				</div>
 				<!-- ./modal header -->
@@ -384,22 +456,14 @@ class M_admin extends CI_Model
 		$pilih = $this->input->get('id');
 		$truncate = '';
 		$outp = array();
-		if(strtolower($pilih) == 'siswa')
-			$truncate = "TRUNCATE TABLE tb_siswa";
-		elseif(strtolower($pilih) == 'admin')
-			$truncate = "TRUNCATE TABLE tb_admin";
-		elseif(strtolower($pilih) == 'langgar')
-			$truncate = "TRUNCATE TABLE tb_langgar";
-		elseif(strtolower($pilih) == 'rapor')
-			$truncate = "TRUNCATE TABLE tb_nilai";
-		elseif(strtolower($pilih) == 'ulangan')
-			$truncate = "TRUNCATE TABLE tb_ulangan";
-		elseif(strtolower($pilih) == 'pesan')
-			$truncate = "TRUNCATE TABLE tb_pesan";
-		elseif(strtolower($pilih) == 'wali')
-			$truncate = "TRUNCATE TABLE tb_wali";
-		elseif(strtolower($pilih) == 'kelas')
-			$truncate = "TRUNCATE TABLE tb_kelas";
+		if(strtolower($pilih) == 'siswa')		$truncate = "TRUNCATE TABLE tb_siswa";
+		elseif(strtolower($pilih) == 'admin')	$truncate = "TRUNCATE TABLE tb_admin";
+		elseif(strtolower($pilih) == 'langgar')	$truncate = "TRUNCATE TABLE tb_langgar";
+		elseif(strtolower($pilih) == 'rapor')	$truncate = "TRUNCATE TABLE tb_nilai";
+		elseif(strtolower($pilih) == 'ulangan')	$truncate = "TRUNCATE TABLE tb_ulangan";
+		elseif(strtolower($pilih) == 'pesan')	$truncate = "TRUNCATE TABLE tb_pesan";
+		elseif(strtolower($pilih) == 'wali')	$truncate = "TRUNCATE TABLE tb_wali";
+		elseif(strtolower($pilih) == 'kelas')	$truncate = "TRUNCATE TABLE tb_kelas";
 		if($truncate != '')
 		{
 			$sql = $this->db->query($truncate);
@@ -425,16 +489,11 @@ class M_admin extends CI_Model
 	public function dl_contoh() 
 	{
 		$pilih = $this->input->get('id');
-		if(strtolower($pilih) == 'siswa')
-			$namafile = 'contoh_siswa_isian.xls';
-		elseif(strtolower($pilih) == 'admin')
-			$namafile = 'contoh_admin_isian.xls';
-		elseif(strtolower($pilih) == 'rapor')
-			$namafile = 'contoh_nilai_rapor.xls';
-		elseif(strtolower($pilih) == 'ulangan')
-			$namafile = 'contoh_nilai_ulangan.xls';
-		elseif(strtolower($pilih) == 'wali')
-			$namafile = 'contoh_wali_isian.xls';
+		if(strtolower($pilih) == 'siswa')		$namafile = 'contoh_siswa_isian.xls';
+		elseif(strtolower($pilih) == 'admin')	$namafile = 'contoh_admin_isian.xls';
+		elseif(strtolower($pilih) == 'rapor')	$namafile = 'contoh_nilai_rapor.xls';
+		elseif(strtolower($pilih) == 'ulangan')	$namafile = 'contoh_nilai_ulangan.xls';
+		elseif(strtolower($pilih) == 'wali')	$namafile = 'contoh_wali_isian.xls';
 		$target = './utama/assists/files/excel/'.$namafile;
 		if(file_exists($target))
 		{
@@ -453,9 +512,14 @@ class M_admin extends CI_Model
 	// *******************************************************************************************
 	// ***                                   Awal Data Admin                                   ***
 	// *******************************************************************************************
-	function showDataAdmin($username, $mulai, $cari)
+	function showDataAdmin()
 	{
 		$userAktif = $this->session->userdata('username');
+		
+		$pilih = $this->input->get('pl');
+		if(isset($_GET['id'])) {$username = $_GET['id'];} else {$username = '';}
+		if(isset($_GET['cr'])) {$cari = $_GET['cr'];} else {$cari = '';}
+		if(isset($_GET['m']))  {$mulai = $_GET['m'];} else {$mulai = 1;}
 		
 		echo
                 '<div class="col-md-12">
@@ -554,7 +618,7 @@ class M_admin extends CI_Model
 											<img src="'.base_url().'utama/assists/images/icons/control_start.png" width=24 height=24 style="margin-top:-4px;">
 										</button>';
 								else
-									echo '<a href="#" id="pl=admin&m=1&cr='.$cari.'" class="btn btn-primary" style="height:34px;" onclick="showPage(this)">
+									echo '<a href="#" id="pl=admin&m=1&cr='.$cari.'" class="btn btn-primary" style="height:34px;" onclick="showDataAll(this.id)">
 											<img src="'.base_url().'utama/assists/images/icons/control_start_blue.png" width=24 height=24 style="margin-top:-4px;">
 										</a>';
 								if($pagenow <= 1)
@@ -562,12 +626,12 @@ class M_admin extends CI_Model
 											<img src="'.base_url().'utama/assists/images/icons/control_rewind.png" width=24 height=24 style="margin-top:-4px;">
 										</button>';
 								else
-									echo '<a href="#" id="pl=admin&m='.$lastpage.'&cr='.$cari.'" class="btn btn-primary" style="height:34px;" onclick="showPage(this)">
+									echo '<a href="#" id="pl=admin&m='.$lastpage.'&cr='.$cari.'" class="btn btn-primary" style="height:34px;" onclick="showDataAll(this.id)">
 											<img src="'.base_url().'utama/assists/images/icons/control_rewind_blue.png" width=24 height=24 style="margin-top:-4px;">
 										</a>';
 								echo '<button type="button" class="btn btn-primary" disabled>'.$pagenow.'</button>';
 								if($numpages > $pagenow)
-									echo '<a href="#" id="pl=admin&m='.$nextpage.'&cr='.$cari.'" class="btn btn-primary" style="height:34px;" onclick="showPage(this)">
+									echo '<a href="#" id="pl=admin&m='.$nextpage.'&cr='.$cari.'" class="btn btn-primary" style="height:34px;" onclick="showDataAll(this.id)">
 											<img src="'.base_url().'utama/assists/images/icons/control_fastforward_blue.png" width=24 height=24 style="margin-top:-4px;">
 										</a>';
 								else
@@ -579,7 +643,7 @@ class M_admin extends CI_Model
 											<img src="'.base_url().'utama/assists/images/icons/control_end.png" width=16 height=16>
 										</button>';
 								else
-									echo '<a href="#" id="pl=admin&m='.$numpages.'&cr='.$cari.'" class="btn btn-primary" style="height:34px;" onclick="showPage(this)">
+									echo '<a href="#" id="pl=admin&m='.$numpages.'&cr='.$cari.'" class="btn btn-primary" style="height:34px;" onclick="showDataAll(this.id)">
 											<img src="'.base_url().'utama/assists/images/icons/control_end_blue.png" width=24 height=24 style="margin-top:-4px;">
 										</a>';
 							}
@@ -1382,17 +1446,22 @@ class M_admin extends CI_Model
 	// ************************************************************************************************
 	// **********************************    Awal Data Wali Kelas     *********************************
 	// ************************************************************************************************
-	function showDataWali($username, $mulai, $cari)
+	function showDataWali()
 	{
+		$pilih = $this->input->get('pl');
+		$pilih1 = $this->input->get('pl1');
+		if(isset($_GET['id'])) {$username = $_GET['id'];} else {$username = '';}
+		if(isset($_GET['cr'])) {$cari = $_GET['cr'];} else {$cari = '';}
+		if(isset($_GET['m']))  {$mulai = $_GET['m'];} else {$mulai = 1;}
+		
 		$level    = $this->session->userdata('level');
-		if($username == 'kelas') $pilih = 'kelas'; else $pilih = 'wali';
 		echo
                 '<div class="col-md-12">
-					<input type="hidden" name="pilih" id="pilih" value="'.$pilih.'">
+					<input type="hidden" name="pilih" id="pilih" value="'.$pilih1.'">
                     <div class="panel panel-primary">
 						<!--
                         <div class="panel-heading">';
-						if($pilih == 'wali')
+						if($pilih1 == 'wali')
                             echo '<center><b><i>Daftar Wali Kelas</i></b></center>';
 						else
                             echo '<center><b><i>Daftar Kelas</i></b></center>';
@@ -1405,7 +1474,7 @@ class M_admin extends CI_Model
 								$sts_log = array('Y' => 'Aktif', 'N' => 'Tidak');
 								$nomer = 0;
 								$jml_data = 0;
-								if($pilih == 'wali')
+								if($pilih1 == 'wali')
 									$query = $this->db->select('*')
 												->from('tb_kelas')
 												->join('tb_wali', 'tb_kelas.kd_kelas = tb_wali.kelas', 'left')
@@ -1420,7 +1489,7 @@ class M_admin extends CI_Model
 								{
 									$kelas      = $row->kd_kelas;
 									$nama_kelas = $row->nama_kelas;
-									if($pilih == 'wali') $nama_guru  = $row->nama; else 
+									if($pilih1 == 'wali') $nama_guru  = $row->nama; else 
 									{
 										$prodi = $row->kd_prodi;
 										$jml_siswa = $row->siswa;
@@ -1435,7 +1504,7 @@ class M_admin extends CI_Model
 												<thead>
 													<tr style="background:green;color:yellow;">
 														<th><center>No</center></th>';
-														if($pilih == 'wali')
+														if($pilih1 == 'wali')
 															echo
 														'<th><center>Kelas</center></th>
 														<th><center>Nama</center></th>';
@@ -1458,20 +1527,20 @@ class M_admin extends CI_Model
 									else
 										echo 
 													'<tr class="gradeA">';
-									if($pilih == 'wali')
+									if($pilih1 == 'wali')
 										echo
 														'<td><center>'.($nomer + 1).'</center></td>
-														<td><center><a href="#" id="pl=wali&id='.$kelas.'" onclick="editDataWali(this)">'.$nama_kelas.'</a></center></td>
-														<td><a href="#" id="pl=wali&id='.$kelas.'" onclick="editDataWali(this)">'.$nama_guru.'</a></td>
+														<td><center><a href="#" id="pl=wali&pl1=wali&id='.$kelas.'" onclick="editDataWali(this)">'.$nama_kelas.'</a></center></td>
+														<td><a href="#" id="pl=wali&pl1=wali&id='.$kelas.'" onclick="editDataWali(this)">'.$nama_guru.'</a></td>
 													</tr>';
 									else
 									{
 										echo
 														'<td><center>'.($nomer + 1).'</center></td>
-														<td><center><a href="#" id="pl=kelas&id='.$kelas.'" onclick="editDataWali(this)">'.$kelas.'</a></center></td>
-														<td><center><a href="#" id="pl=kelas&id='.$kelas.'" onclick="editDataWali(this)">'.$nama_kelas.'</a></center></td>
-														<td><center><a href="#" id="pl=kelas&id='.$kelas.'" onclick="editDataWali(this)">'.$prodi.'</a></center></td>
-														<td><center><a href="#" id="pl=kelas&id='.$kelas.'" onclick="editDataWali(this)">'.$jml_siswa.'</a></center></td>
+														<td><center><a href="#" id="pl=wali&pl1=kelas&id='.$kelas.'" onclick="editDataWali(this)">'.$kelas.'</a></center></td>
+														<td><center><a href="#" id="pl=wali&pl1=kelas&id='.$kelas.'" onclick="editDataWali(this)">'.$nama_kelas.'</a></center></td>
+														<td><center><a href="#" id="pl=wali&pl1=kelas&id='.$kelas.'" onclick="editDataWali(this)">'.$prodi.'</a></center></td>
+														<td><center><a href="#" id="pl=wali&pl1=kelas&id='.$kelas.'" onclick="editDataWali(this)">'.$jml_siswa.'</a></center></td>
 														<td>
 															<center>';
 															if($level > 94)
@@ -1500,7 +1569,7 @@ class M_admin extends CI_Model
 									echo '<b><center>Tidak ada data</center></b><br/>';
 								echo
 							'</div>';
-							if(($pilih == 'wali') and ($level > 95))
+							if(($pilih1 == 'wali') and ($level > 95))
 								echo
 							'*) Anda dapat mempersiapkan dan mengedit data melalui microsoft Excel. Format file dapat di <a href="dl_contoh?id=wali">download disini</a><br />
 							*) Rubahlah contoh diatas kemudian simpan dan <a href="#" id="wali" onClick="showImportData(this)">import disini.</a>
@@ -1519,7 +1588,7 @@ class M_admin extends CI_Model
 									<img src="'.base_url().'utama/assists/images/icons/stop.ico" width=24 height=24> Hapus Semua Data
 								</a>
 								&nbsp;&nbsp;&nbsp;
-								<a href="#" id="pl=kelas&id" class="btn btn-success" onclick="editDataWali(this)">
+								<a href="#" id="pl=wali&pl1=kelas&id=" class="btn btn-success" onclick="editDataWali(this)">
 									<img src="'.base_url().'utama/assists/images/icons/add_card.ico" width=24 height=24> Tambah Data
 								</a>
 							</center>';
@@ -1555,9 +1624,10 @@ class M_admin extends CI_Model
 		}
 		
 		$pilih = $this->input->get('pl');
+		$pilih1 = $this->input->get('pl1');
 		$kelas = $this->input->get('id');
 		
-		if($pilih == 'wali')
+		if($pilih1 == 'wali')
 		{
 			$query = $this->db->select('*')
 					->from('tb_kelas')
@@ -1608,7 +1678,7 @@ class M_admin extends CI_Model
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 							<h3 class="modal-title" id="isianAdminLabel" style="margin-bottom:0px;margin-top:0px;color: yellow;text-shadow: 2px 2px 4px black, 0 0 25px white, 0 0 5px darkblue;">';
-							if($pilih == 'wali')
+							if($pilih1 == 'wali')
 								echo 
 								'<center><b>
 									<img src="'.base_url().'utama/assists/images/icons/group.png" width=32 height=32> Edit Wali Kelas
@@ -1633,8 +1703,8 @@ class M_admin extends CI_Model
 
 						<!-- modal body -->
 						<div class="modal-body" id="isianDataWali">
-						<input type="hidden" name="pilihM" id="pilihM" value="'.$pilih.'">';
-						if($pilih == 'wali')
+						<input type="hidden" name="pilihM" id="pilihM" value="'.$pilih1.'">';
+						if($pilih1 == 'wali')
 						{
 							echo
 							'<input type="hidden" name="kelasM" id="kelasM" value="'.$kelas.'">
@@ -1838,8 +1908,11 @@ class M_admin extends CI_Model
 			if($query->num_rows() > 0)
 				$this->db->where('kd_kelas', $kd_kelas)->update('tb_kelas', $data);
 			else
+			{
 				$this->db->insert('tb_kelas', $data);
-						
+				$data = array('kelas' => $kd_kelas);
+				$this->db->insert('tb_wali', $data);
+			}			
 		}
 		$outp = array();
 		$outp[0] = 'sukses';
@@ -1859,11 +1932,19 @@ class M_admin extends CI_Model
 	// *******************************************************************************************
 	// **********************************    Awal Data Siswa     *********************************
 	// *******************************************************************************************
-	function showDataSiswa($no_ujian_smp,$mulai,$cari,$urut,$naik)
+	function showDataSiswa()
 	{
 		$level    = $this->session->userdata('level');
 		$username = $this->session->userdata('username');
+
+		$pilih = $this->input->get('pl');
+		if(isset($_GET['id'])) {$no_ujian_smp = $_GET['id'];} else {$no_ujian_smp = '';}
+		if(isset($_GET['cr'])) {$cari = $_GET['cr'];} else {$cari = '';}
+		if(isset($_GET['m']))  {$mulai = $_GET['m'];} else {$mulai = 1;}
+		if(isset($_GET['sr'])) {$urut = $_GET['sr'];} else {$urut = '';}
+		if(isset($_GET['ur'])) {$naik = $_GET['ur'];} else {$naik = '';}
 		$kelas = $this->input->get('kl');
+		
 		if($level == 94)
 		{
 			$query = $this->db->select('*')
@@ -2299,7 +2380,7 @@ class M_admin extends CI_Model
 	// *****************************************************************************************
 	// **********************************    Awal Presensi     *********************************
 	// *****************************************************************************************
-	function showPresensiSiswa()
+	function showDataPresensi()
 	{
 		date_default_timezone_set("Asia/Jakarta");
 		if(isset($_GET['m']))  {$mulai = $_GET['m'];} else {$mulai = 1;}
@@ -2637,7 +2718,7 @@ class M_admin extends CI_Model
 										<img src="'.base_url().'utama/assists/images/icons/control_start.png" width=24 height=24 style="margin-top:-4px;">
 									</button>';
 							else
-								echo '<a href="#" id="pl=siswa&m=1&cr='.$cari.'&sr='.$urut.'&ur='.$naik.'" class="btn btn-primary" style="height:34px;" onclick="showDataAll(this.id)">
+								echo '<a href="#" id="pl=presensi&m=1" class="btn btn-primary" style="height:34px;" onclick="showDataAll(this.id)">
 										<img src="'.base_url().'utama/assists/images/icons/control_start_blue.png" width=24 height=24 style="margin-top:-4px;">
 									</a>';
 							if($pagenow <= 1)
@@ -2645,12 +2726,12 @@ class M_admin extends CI_Model
 										<img src="'.base_url().'utama/assists/images/icons/control_rewind.png" width=24 height=24 style="margin-top:-4px;">
 									</button>';
 							else
-								echo '<a href="#" id="pl=siswa&m='.$lastpage.'&cr='.$cari.'&sr='.$urut.'&ur='.$naik.'" class="btn btn-primary" style="height:34px;" onclick="showDataAll(this.id)">
+								echo '<a href="#" id="pl=presensi&m='.$lastpage.'" class="btn btn-primary" style="height:34px;" onclick="showDataAll(this.id)">
 										<img src="'.base_url().'utama/assists/images/icons/control_rewind_blue.png" width=24 height=24 style="margin-top:-4px;">
 									</a>';
 							echo '<button type="button" class="btn btn-primary" disabled>'.$pagenow.'</button>';
 							if($numpages > $pagenow)
-								echo '<a href="#" id="pl=siswa&m='.$nextpage.'&cr='.$cari.'&sr='.$urut.'&ur='.$naik.'" class="btn btn-primary" style="height:34px;" onclick="showDataAll(this.id)">
+								echo '<a href="#" id="pl=presensi&m='.$nextpage.'" class="btn btn-primary" style="height:34px;" onclick="showDataAll(this.id)">
 										<img src="'.base_url().'utama/assists/images/icons/control_fastforward_blue.png" width=24 height=24 style="margin-top:-4px;">
 									</a>';
 							else
@@ -2662,7 +2743,7 @@ class M_admin extends CI_Model
 										<img src="'.base_url().'utama/assists/images/icons/control_end.png" width=16 height=16>
 									</button>';
 							else
-								echo '<a href="#" id="pl=siswa&m='.$numpages.'&cr='.$cari.'&sr='.$urut.'&ur='.$naik.'" class="btn btn-primary" style="height:34px;" onclick="showDataAll(this.id)">
+								echo '<a href="#" id="pl=presensi&m='.$numpages.'" class="btn btn-primary" style="height:34px;" onclick="showDataAll(this.id)">
 										<img src="'.base_url().'utama/assists/images/icons/control_end_blue.png" width=24 height=24 style="margin-top:-4px;">
 									</a>';
 						}
@@ -2813,8 +2894,7 @@ class M_admin extends CI_Model
 								<div class="col-md-4 form-group" id="idKelasModal" style="display:none;margin-top: 4px">
 									<label class="text-bayang">Kelas : </label>
 									&nbsp;&nbsp;&nbsp;
-									<select id="kelasPilih" name="kelasPilih" style="height: 32px;width: 100px;" onchange="showKelas(this)">
-										<option value=""></option>';
+									<select id="kelasPilih" name="kelasPilih" style="height: 32px;width: 100px;" onchange="showKelas(this)">';
 										$query = $this->db->select('*')
 													->from('tb_kelas')
 													->get();
@@ -2887,11 +2967,13 @@ class M_admin extends CI_Model
 	// ********************************************************************************************
 	// **********************************    Awal Pelanggaran     *********************************
 	// ********************************************************************************************
-	function showPelanggaranSiswa()
+	function showDataLanggar()
 	{
 		$level    = $this->session->userdata('level');
 		$username = $this->session->userdata('username');
 		
+		$pilih = $this->input->get('pl');
+
 		if(isset($_GET['m']))   $mulai    = $_GET['m']; 	else $mulai = 1;
 		if(isset($_GET["id"]))  $id       = $_GET["id"];	else $id    = "";
 		if(isset($_GET["idk"])) $indukP   = $_GET["idk"];	else $indukP = "";
@@ -3154,7 +3236,7 @@ class M_admin extends CI_Model
 										<img src="'.base_url().'utama/assists/images/icons/control_start.png" width=24 height=24 style="margin-top:-4px;">
 									</button>';
 							else
-								echo '<a href="#" id="pl=langgar&m=1" class="btn btn-primary" style="height:34px;" onclick="rubahKelasLanggar(1)">
+								echo '<a href="#" id="pl=langgar&m=1" class="btn btn-primary" style="height:34px;" onclick="showDataAll(this.id)">
 										<img src="'.base_url().'utama/assists/images/icons/control_start_blue.png" width=24 height=24 style="margin-top:-4px;">
 									</a>';
 							if($pagenow <= 1)
@@ -3162,12 +3244,12 @@ class M_admin extends CI_Model
 										<img src="'.base_url().'utama/assists/images/icons/control_rewind.png" width=24 height=24 style="margin-top:-4px;">
 									</button>';
 							else
-								echo '<a href="#" id="pl=langgar&m='.$lastpage.'" class="btn btn-primary" style="height:34px;" onclick="rubahKelasLanggar('.$lastpage.')">
+								echo '<a href="#" id="pl=langgar&m='.$lastpage.'" class="btn btn-primary" style="height:34px;" onclick="showDataAll(this.id)">
 										<img src="'.base_url().'utama/assists/images/icons/control_rewind_blue.png" width=24 height=24 style="margin-top:-4px;">
 									</a>';
 							echo '<button type="button" class="btn btn-primary" disabled>'.$pagenow.'</button>';
 							if($numpages > $pagenow)
-								echo '<a href="#" id="pl=langgar&m='.$nextpage.'" class="btn btn-primary" style="height:34px;" onclick="rubahKelasLanggar('.$nextpage.')">
+								echo '<a href="#" id="pl=langgar&m='.$nextpage.'" class="btn btn-primary" style="height:34px;" onclick="showDataAll(this.id)">
 										<img src="'.base_url().'utama/assists/images/icons/control_fastforward_blue.png" width=24 height=24 style="margin-top:-4px;">
 									</a>';
 							else
@@ -3179,7 +3261,7 @@ class M_admin extends CI_Model
 										<img src="'.base_url().'utama/assists/images/icons/control_end.png" width=16 height=16>
 									</button>';
 							else
-								echo '<a href="#" id="pl=langgar&m='.$numpages.'" class="btn btn-primary" style="height:34px;" onclick="rubahKelasLanggar('.$numpage.')">
+								echo '<a href="#" id="pl=langgar&m='.$numpages.'" class="btn btn-primary" style="height:34px;" onclick="showDataAll(this.id)">
 										<img src="'.base_url().'utama/assists/images/icons/control_end_blue.png" width=24 height=24 style="margin-top:-4px;">
 									</a>';
 						}
@@ -3272,7 +3354,9 @@ class M_admin extends CI_Model
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 							<h3 class="modal-title hit-the-floor" id="isianUserLabel">
-								<center><b>Data Pelanggaran Siswa</b></center>
+								<center>
+									<img src="'.base_url().'utama/assists/images/icons/emotion_unhappy.png" width=36 height=36> <b>Data Pelanggaran Siswa</b>
+								</center>
 							</h3>
 						</div>
 						<!-- ./modal header -->
@@ -3508,11 +3592,16 @@ class M_admin extends CI_Model
 	// **************************************************************************************
 	// *********************************     Awal Rapor     *********************************
 	// **************************************************************************************
-	function showRaporSisip($noujian, $mulai, $cari)
+	function showDataRapor()
 	{
 		$level    = $this->session->userdata('level');
 		$username = $this->session->userdata('username');
 		
+		$pilih = $this->input->get('pl');
+		if(isset($_GET['id'])) {$noujian = $_GET['id'];} else {$noujian = '';}
+		if(isset($_GET['cr'])) {$cari = $_GET['cr'];} else {$cari = '';}
+		if(isset($_GET['m']))  {$mulai = $_GET['m'];} else {$mulai = 1;}
+
 		if(isset($_GET['pl'])) $pilih = $this->input->get('pl'); else $pilih = 'rapor';
 		if(isset($_GET['kl'])) $kelas = $this->input->get('kl'); else $kelas = '';
 		if(isset($_GET['tp'])) $tapel = $this->input->get('tp'); else $tapel = 2017;
@@ -4570,11 +4659,16 @@ class M_admin extends CI_Model
 	// ***********************************************************************************************
 	// ********************************      Awal Ulangan Harian     *********************************
 	// ***********************************************************************************************
-	function showUlanganHarian($noujian, $mulai, $cari)
+	function showDataUlangan()
 	{
 		$level    = $this->session->userdata('level');
 		$username = $this->session->userdata('username');
 		
+		$pilih = $this->input->get('pl');
+		if(isset($_GET['id'])) {$noujian = $_GET['id'];} else {$noujian = '';}
+		if(isset($_GET['cr'])) {$cari = $_GET['cr'];} else {$cari = '';}
+		if(isset($_GET['m']))  {$mulai = $_GET['m'];} else {$mulai = 1;}
+
 		if(isset($_GET['kl'])) $kelas = $this->input->get('kl'); else $kelas = '';
 		if(isset($_GET['tp'])) $tapel = $this->input->get('tp'); else $tapel = 2017;
 		if(isset($_GET['sm'])) $semester = $this->input->get('sm'); else $semester = 1;
@@ -5747,8 +5841,12 @@ class M_admin extends CI_Model
 	// **************************************************************************************
 	// *********************************     Awal Pesan     *********************************
 	// **************************************************************************************
-	function showDataPesan($pilih, $mulai, $cari)
+	function showDataPesan()
 	{
+		if(isset($_GET['id'])) {$pilih = $_GET['id'];} else {$pilih = '';}
+		if(isset($_GET['cr'])) {$cari = $_GET['cr'];} else {$cari = '';}
+		if(isset($_GET['m']))  {$mulai = $_GET['m'];} else {$mulai = 1;}
+		
 		$jml_data = 8;
 		$awal = ($mulai - 1) * $jml_data;
 		$nomer = $awal;
@@ -5848,7 +5946,7 @@ class M_admin extends CI_Model
 											<img src="'.base_url().'utama/assists/images/icons/control_start.png" width=24 height=24 style="margin-top:-4px;">
 										</button>';
 								else
-									echo '<a href="#" id="pl=pesan&m=1" class="btn btn-primary" style="height:34px;" onclick="showPage(this)">
+									echo '<a href="#" id="pl=pesan&m=1" class="btn btn-primary" style="height:34px;" onclick="showDataAll(this.id)">
 											<img src="'.base_url().'utama/assists/images/icons/control_start_blue.png" width=24 height=24 style="margin-top:-4px;">
 										</a>';
 								if($pagenow <= 1)
@@ -5856,12 +5954,12 @@ class M_admin extends CI_Model
 											<img src="'.base_url().'utama/assists/images/icons/control_rewind.png" width=24 height=24 style="margin-top:-4px;">
 										</button>';
 								else
-									echo '<a href="#" id="pl=pesan&m='.$lastpage.'" class="btn btn-primary" style="height:34px;" onclick="showPage(this)">
+									echo '<a href="#" id="pl=pesan&m='.$lastpage.'" class="btn btn-primary" style="height:34px;" onclick="showDataAll(this.id)">
 											<img src="'.base_url().'utama/assists/images/icons/control_rewind_blue.png" width=24 height=24 style="margin-top:-4px;">
 										</a>';
 								echo '<button type="button" class="btn btn-primary" disabled>'.$pagenow.'</button>';
 								if($numpages > $pagenow)
-									echo '<a href="#" id="pl=pesan&m='.$nextpage.'" class="btn btn-primary" style="height:34px;" onclick="showPage(this)">
+									echo '<a href="#" id="pl=pesan&m='.$nextpage.'" class="btn btn-primary" style="height:34px;" onclick="showDataAll(this.id)">
 											<img src="'.base_url().'utama/assists/images/icons/control_fastforward_blue.png" width=24 height=24 style="margin-top:-4px;">
 										</a>';
 								else
@@ -5873,7 +5971,7 @@ class M_admin extends CI_Model
 											<img src="'.base_url().'utama/assists/images/icons/control_end.png" width=16 height=16>
 										</button>';
 								else
-									echo '<a href="#" id="pl=pesan&m='.$numpages.'" class="btn btn-primary" style="height:34px;" onclick="showPage(this)">
+									echo '<a href="#" id="pl=pesan&m='.$numpages.'" class="btn btn-primary" style="height:34px;" onclick="showDataAll(this.id)">
 											<img src="'.base_url().'utama/assists/images/icons/control_end_blue.png" width=24 height=24 style="margin-top:-4px;">
 										</a>';
 							}

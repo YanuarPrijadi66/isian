@@ -94,11 +94,17 @@ class Pages extends CI_Controller
     function admin_page($page)
     {
 		if($page == 'showDataAll')				$this->m_admin->showDataAll();
-		elseif($page == 'showNavAdmin') 		$this->m_admin->showNavAdmin();
+		elseif($page == 'showHeaderAdmin') 		$this->m_admin->showHeaderAdmin();
 		elseif($page == 'hapusData')			$this->m_admin->hapusData();
 		elseif($page == 'dl_contoh')			$this->m_admin->dl_contoh();
+		elseif($page == 'showImportData')		$this->m_admin->showImportData();
+		elseif($page == 'hapusDataAll')			$this->m_admin->hapusDataAll();
+		elseif($page == 'exportData')			$this->m_cetak->exportData();
+		elseif($page == 'importDataAll')		$this->m_cetak->importDataAll();
 		
-		// ----------- Bagian Admin -----------------
+		elseif($page == 'ctkRaporModal')		$this->m_admin->ctkRaporModal();
+		elseif($page == 'cekRaporAll')			$this->m_admin->cekRaporAll();
+		
 		elseif($page == 'showDataSekolah')		$this->m_admin->showDataSekolah();
 		elseif($page == 'simpanDataSekolah')	$this->m_admin->simpanDataSekolah();
 		elseif($page == 'showDataKKM')			$this->m_admin->showDataKKM();
@@ -107,28 +113,20 @@ class Pages extends CI_Controller
 		elseif($page == 'simpanDataAdmin')		$this->m_admin->simpanDataAdmin();
 		elseif($page == 'showWaliModal')		$this->m_admin->showWaliModal();
 		elseif($page == 'simpanDataWali')		$this->m_admin->simpanDataWali();
-		
-		// ----------- Bagian Siswa -----------------
+		elseif($page == 'showLanggarModal')		$this->m_admin->showLanggarModal();
+		elseif($page == 'simpanLanggarSiswa')	$this->m_admin->simpanLanggarSiswa();
+		elseif($page == 'showRaporModal')		$this->m_admin->showRaporModal();
+		elseif($page == 'simpanNilaiRapor')		$this->m_admin->simpanNilaiRapor();
+		elseif($page == 'showUlanganModal')		$this->m_admin->showUlanganModal();
+		elseif($page == 'simpanNilaiUH')		$this->m_admin->simpanNilaiUH();
 		
 		elseif($page == 'bacaPesan')			$this->m_admin->bacaPesan();
 		elseif($page == 'balasPesan')			$this->m_admin->balasPesan();
 		
-		elseif($page == 'showPresensiSiswa')	$this->m_admin->showPresensiSiswa();
 		elseif($page == 'rubahPresensi')		$this->m_admin->rubahPresensi();
 		elseif($page == 'ctkPresensiModal')		$this->m_admin->ctkPresensiModal();
-		elseif($page == 'showLanggarModal')		$this->m_admin->showLanggarModal();
-		elseif($page == 'simpanLanggarSiswa')	$this->m_admin->simpanLanggarSiswa();
-		elseif($page == 'showRaporModal')		$this->m_admin->showRaporModal();
-		elseif($page == 'ctkRaporModal')		$this->m_admin->ctkRaporModal();
-		elseif($page == 'cekRaporAll')			$this->m_admin->cekRaporAll();
-		elseif($page == 'simpanNilaiRapor')		$this->m_admin->simpanNilaiRapor();
-		elseif($page == 'showUlanganModal')		$this->m_admin->showUlanganModal();
-		elseif($page == 'simpanNilaiUH')		$this->m_admin->simpanNilaiUH();
+		
 
-		elseif($page == 'showImportData')		$this->m_admin->showImportData();
-		elseif($page == 'hapusDataAll')			$this->m_admin->hapusDataAll();
-		elseif($page == 'exportData')			$this->m_cetak->exportData();
-		elseif($page == 'importDataAll')		$this->m_cetak->importDataAll();
 		elseif( ! file_exists('utama/application/views/p_admin/'.$page.'.php'))
 		{
 			redirect('home');
@@ -137,7 +135,6 @@ class Pages extends CI_Controller
 		else
 		{
 			$this->load->view('p_admin/template/header');
-			$this->load->view('p_admin/template/nav');
 			$this->load->view('p_admin/'.$page);
 			$this->load->view('p_admin/template/footer');
 		}
@@ -148,9 +145,9 @@ class Pages extends CI_Controller
 	// ======================================================================================
     function siswa_page($page)
     {
-		if($page == 'showNavSiswa')				$this->m_data->showNavSiswa();
+		if($page == 'showHeaderSiswa')			$this->m_data->showHeaderSiswa();
 		elseif($page == 'showCetakDoc')			$this->m_data->showCetakDoc();
-		elseif($page == 'showRaporSiswa')		$this->m_data->showRaporSiswa();
+		elseif($page == 'showSiswaRapor')		$this->m_data->showSiswaRapor();
 		elseif($page == 'showSiswaPresensi')	$this->m_data->showSiswaPresensi();
 		elseif($page == 'showSiswaLanggar')		$this->m_data->showSiswaLanggar();
 		elseif($page == 'cekCetakRapor')		$this->m_data->cekCetakRapor();
@@ -165,7 +162,7 @@ class Pages extends CI_Controller
 		else
 		{
 			$this->load->view('p_siswa/template/header');
-			$this->load->view('p_siswa/template/nav');
+			//$this->load->view('p_siswa/template/nav');
 			$this->load->view('p_siswa/'.$page);
 			$this->load->view('p_siswa/template/footer');
 		}
