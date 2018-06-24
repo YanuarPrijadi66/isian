@@ -1,0 +1,10 @@
+catatan :
+
+	1. copy-kan database isian pada database anda
+	2. Rubah username dan password database pada file : utama/application/config/database.php
+	3. Masuk dengan username : admin, password : 1234567
+	4. Untuk user yang lain (siswa / walikelas), anda dapat melihat dari edit data yang bersangkutan
+	5. Dilarang meperjual-belikan aplikasi ini
+	
+	
+Terima kasih.
