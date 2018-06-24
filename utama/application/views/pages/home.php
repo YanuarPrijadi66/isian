@@ -1,8 +1,24 @@
+		<?php
+			$query = $this->db->select('*')
+						->from('tb_sekolah')
+						->get();
+			if($query->num_rows() > 0)
+			{
+				$row = $query->row();
+				$nama = $row->nama_sekolah;
+				$kota = $row->kota;
+			}
+			else
+			{
+				$nama = '';
+				$kota = '';
+			}	
+		?>
         <div class="container">
             <!-- Codrops top bar -->
             <div class="codrops-top">
                 <a href="home" target="_blank">
-                    <strong>&laquo; SMA Negeri 6 Surabaya </strong>
+                    <strong>&laquo; <?php echo $nama.' '.$kota.' ';?></strong>
                 </a>
                 <div class="clr"></div>
             </div>
@@ -10,10 +26,3 @@
             <section id="idLogin">				
             </section>
         </div>
-		
-		<script>
-			$(document).ready(function()
-			{
-				showLogin();
-			});
-		</script>

@@ -1,12 +1,8 @@
-			<div class="modal fade" id="pesanModalShow" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
-			<div class="modal fade" id="cetakDocModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
-			<div class="modal fade" id="raporSiswaId" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
-
-			<div class="control-sidebar-bg"></div>
-
 		</div>
 		<!-- ./wrapper -->
 
+		<div class="modal fade in" id="idUtamaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="border-radius: 15px;"></div>
+		
 		<!-- Bootstrap 3.3.6 -->
 		<script src="<?php echo base_url();?>utama/assets/adminlte2/bootstrap/js/bootstrap.min.js"></script>
 		<!-- AdminLTE App -->
