@@ -21,6 +21,10 @@ Please update your installation to the latest CodeIgniter 3.x version available
 - Pelanggaran Siswa
 - Nilai Ulangan Harian
 - Nilai Rapor
+- Export /Import Data menggunakan Excel (PHPExcel)
+- Cetak data PDF (mPDF)
+- Captcha
+- QRCode
 
 # Otoritas Pemakai
 - Admin / TU    <b>(default user : admin, password : 1234567)</b>
