@@ -23,7 +23,7 @@ Please update your installation to the latest CodeIgniter 3.x version available
 - Nilai Rapor
 
 # Otoritas Pemakai
-- Admin / TU
+- Admin / TU    <b>(default user : admin, password : 1234567)</b>
 - Wali Kelas
 - Siswa
 
