@@ -39,3 +39,7 @@ Please update your installation to the latest CodeIgniter 3.x version available
 - Sweet Alert
 - PHP 5.6
 - Javascript 2.2.3
+
+Contact Person :
+- email : YanuarPrijadi66@gmail.com
+- WA : 0895-3031-7085
