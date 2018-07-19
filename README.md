@@ -43,3 +43,6 @@ Please update your installation to the latest CodeIgniter 3.x version available
 Contact Person :
 - email : YanuarPrijadi66@gmail.com
 - WA : 0895-3031-7085
+
+# Revisi
+- *Lihat di menu [wiki](https://github.com/YanuarPrijadi66/isian/wiki)*
