@@ -17,18 +17,17 @@ Please update your installation to the latest CodeIgniter 3.x version available
 
 # Fitur
 - Isian Data Siswa sesuai dengan Buku Induk, DKN dan Data Dapodik
-- Absensi / Presensi Siswa
-- Pelanggaran Siswa
-- Nilai Ulangan Harian
-- Nilai Rapor
+- Absensi / Presensi Siswa dan Pelanggaran Siswa
+- Nilai Ulangan Harian dan Nilai Rapor
 - Export /Import Data menggunakan Excel (PHPExcel)
 - Cetak data PDF (mPDF)
-- Captcha
-- QRCode
+- Captcha, QRCode dan Barcode
+- Klaper, Rombel, Surat tugas, Form Absensi Harian
+- Dll
 
 # Otoritas Pemakai
 - Admin / TU    <b>(default user : admin, password : 1234567)</b>
-- Wali Kelas
+- Wali Kelas dan BK
 - Siswa
 
 # Penunjang
@@ -39,10 +38,6 @@ Please update your installation to the latest CodeIgniter 3.x version available
 - Sweet Alert
 - PHP 5.6
 - Javascript 2.2.3
-
-Contact Person :
-- email : YanuarPrijadi66@gmail.com
-- WA : 0895-3031-7085
 
 # Revisi
 - *Lihat di menu [wiki](https://github.com/YanuarPrijadi66/isian/wiki)*
